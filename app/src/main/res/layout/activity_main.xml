@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="40dp"
-        app:cardBackgroundColor="#8000"
+        app:cardBackgroundColor="#fff"
         android:layout_marginBottom="-10dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
@@ -18,11 +18,6 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/appBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent">
 
         <!--<android.support.v7.widget.Toolbar-->
             <!--android:id="@+id/toolbar"-->
@@ -37,12 +32,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:tabMode="fixed"
-            app:tabTextColor="@android:color/darker_gray"
-            app:tabSelectedTextColor="@android:color/white"
-            android:background="@android:color/transparent"
+            app:tabTextColor="@android:color/holo_red_dark"
+            app:tabSelectedTextColor="@android:color/holo_red_light"
             app:tabGravity="fill"/>
-    </android.support.design.widget.AppBarLayout>
-
         <android.support.v4.view.ViewPager
             android:id="@+id/viewpager"
             android:layout_width="match_parent"
