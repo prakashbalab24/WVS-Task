@@ -18,6 +18,7 @@ import jp.wasabeef.picasso.transformations.BlurTransformation;
 import singledevapps.wvstask.R;
 import singledevapps.wvstask.activities.NewsDescription_Activity;
 import singledevapps.wvstask.model.News;
+import singledevapps.wvstask.parallaxrecyclerview.ParallaxViewHolder;
 
 /**
  * Created by prakash on 11/6/17.
@@ -27,14 +28,17 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
     private Context mContext;
     private List<News> newsList;
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public class MyViewHolder extends ParallaxViewHolder {
         public TextView title;
-        public ImageView bck;
+
+        @Override
+        public int getParallaxImageId() {
+            return R.id.background;
+        }
 
         public MyViewHolder(View view) {
             super(view);
             title = (TextView) view.findViewById(R.id.title);
-            bck = (ImageView) view.findViewById(R.id.background);
 
         }
     }
@@ -54,23 +58,24 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(final MyViewHolder holder, final int position) {
+    public void onBindViewHolder(MyViewHolder holder, int position) {
         final News news = newsList.get(position);
         holder.title.setText(news.getTitle());
-        holder.bck.setBackgroundColor(mContext.getResources().getColor(R.color.colorPrimary));
         if (!news.getUrlToImage().isEmpty()) {
-            Picasso.with(mContext).load(news.getUrlToImage()).transform(new BlurTransformation(mContext)).into(holder.bck);
+           // Picasso.with(mContext).load(news.getUrlToImage()).transform(new BlurTransformation(mContext)).into(holder.getBackgroundImage());
+            Picasso.with(mContext).load(news.getUrlToImage()).into(holder.getBackgroundImage());
         }
-        holder.bck.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(mContext, NewsDescription_Activity.class);
-                intent.putExtra("title",news.getTitle());
-                intent.putExtra("desc",news.getDescription());
-                intent.putExtra("bck",news.getUrlToImage());
-                mContext.startActivity(intent);
-            }
-        });
+//        holder.bck.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(mContext, NewsDescription_Activity.class);
+//                intent.putExtra("title",news.getTitle());
+//                intent.putExtra("desc",news.getDescription());
+//                intent.putExtra("bck",news.getUrlToImage());
+//                mContext.startActivity(intent);
+//            }
+//        });
+        holder.getBackgroundImage().reuse();
         }
 
     @Override

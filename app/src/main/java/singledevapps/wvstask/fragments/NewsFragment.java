@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,6 +23,7 @@ import singledevapps.wvstask.R;
 import singledevapps.wvstask.adapter.NewsAdapter;
 import singledevapps.wvstask.helper.AsyncTaskHelper;
 import singledevapps.wvstask.model.News;
+import singledevapps.wvstask.parallaxrecyclerview.ParallaxRecyclerView;
 
 
 public class NewsFragment extends Fragment implements ResponseListner{
@@ -59,10 +61,15 @@ public class NewsFragment extends Fragment implements ResponseListner{
         newsList = new ArrayList<>();
         adapter = new NewsAdapter(getContext(), newsList);
 
-        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getContext(), 1);
-        recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
+//        ParallaxRecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getContext(), 1);
+//        recyclerView.setLayoutManager(mLayoutManager);
+//        recyclerView.setItemAnimator(new DefaultItemAnimator());
+//        recyclerView.setAdapter(adapter);
+        ParallaxRecyclerView recyclerView = (ParallaxRecyclerView) rootView.findViewById(R.id.recyclerview);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
+
         new AsyncTaskHelper(this,newsList,source, getContext()).execute();
         return rootView;
     }
