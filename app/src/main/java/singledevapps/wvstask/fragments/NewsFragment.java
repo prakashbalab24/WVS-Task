@@ -55,7 +55,9 @@ public class NewsFragment extends Fragment implements ResponseListner{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_news, container, false);
-                recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerview);
+        recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerview);
+        recyclerView.setDrawingCacheEnabled(true);
+        recyclerView.setItemViewCacheSize(8);
         String source = getArguments().getString(URL);
 
         newsList = new ArrayList<>();

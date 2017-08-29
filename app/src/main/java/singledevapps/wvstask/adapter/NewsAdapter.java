@@ -63,7 +63,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
         holder.title.setText(news.getTitle());
         if (!news.getUrlToImage().isEmpty()) {
            // Picasso.with(mContext).load(news.getUrlToImage()).transform(new BlurTransformation(mContext)).into(holder.getBackgroundImage());
-            Picasso.with(mContext).load(news.getUrlToImage()).into(holder.getBackgroundImage());
+            Picasso.with(mContext).load(news.getUrlToImage()).centerCrop().fit().into(holder.getBackgroundImage());
         }
 //        holder.bck.setOnClickListener(new View.OnClickListener() {
 //            @Override
