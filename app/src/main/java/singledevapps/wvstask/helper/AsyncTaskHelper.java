@@ -44,12 +44,16 @@ public class AsyncTaskHelper extends AsyncTask<Void,Void,Void> {
 
     @Override
     protected Void doInBackground(Void... params) {
-        NetworkCalls nc = new NetworkCalls();
-        String jsonStr = nc.getServerCall(Apis.getHitUrl(source));
+        if (NetworkHelper.checkConnection(context.getApplicationContext())) {
+            NetworkCalls nc = new NetworkCalls();
+            String jsonStr = nc.getServerCall(Apis.getHitUrl(source));
+            SharedPrefHelper.saveJsonOffline(context.getApplicationContext(), jsonStr,source);
+        }
+        String parseJson = SharedPrefHelper.getOfflineJson(context.getApplicationContext(),source);
         JSONObject jsonObject;
         JSONArray jsonArray;
         try {
-            jsonObject = new JSONObject(jsonStr);
+            jsonObject = new JSONObject(parseJson);
             jsonArray = jsonObject.getJSONArray("articles");
             Log.i("response","jsonArray:"+jsonArray.toString());
             for (int i=0; i<jsonArray.length(); i++) {

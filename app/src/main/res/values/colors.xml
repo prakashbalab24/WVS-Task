@@ -4,4 +4,5 @@
     <color name="colorPrimaryDark">#a80000</color>
     <color name="colorAccent">#fff</color>
     <color name="colorcpw">#8fff</color>
+    <color name="transperentBlack">#80000000</color>
 </resources>
