@@ -24,11 +24,12 @@ import singledevapps.wvstask.adapter.NewsAdapter;
 import singledevapps.wvstask.helper.AsyncTaskHelper;
 import singledevapps.wvstask.model.News;
 import singledevapps.wvstask.parallaxrecyclerview.ParallaxRecyclerView;
+import singledevapps.wvstask.parallaxrecyclerview.ParallaxViewHolder;
 
 
 public class NewsFragment extends Fragment implements ResponseListner{
     private static final String URL ="url" ;
-    private RecyclerView recyclerView;
+    private ParallaxRecyclerView recyclerView;
     private NewsAdapter adapter;
     private List<News> newsList;
     private News model;
@@ -55,7 +56,7 @@ public class NewsFragment extends Fragment implements ResponseListner{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_news, container, false);
-        recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerview);
+        recyclerView = (ParallaxRecyclerView) rootView.findViewById(R.id.recyclerview);
         recyclerView.setDrawingCacheEnabled(true);
         recyclerView.setItemViewCacheSize(8);
         String source = getArguments().getString(URL);
@@ -67,7 +68,6 @@ public class NewsFragment extends Fragment implements ResponseListner{
 //        recyclerView.setLayoutManager(mLayoutManager);
 //        recyclerView.setItemAnimator(new DefaultItemAnimator());
 //        recyclerView.setAdapter(adapter);
-        ParallaxRecyclerView recyclerView = (ParallaxRecyclerView) rootView.findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
