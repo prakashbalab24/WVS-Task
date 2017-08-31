@@ -1,9 +1,12 @@
-package singledevapps.wvstask;
+package singledevapps.wvstask.activities;
 
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import singledevapps.wvstask.MainActivity;
+import singledevapps.wvstask.R;
 
 public class SplashScreen extends AppCompatActivity {
 

@@ -57,11 +57,12 @@ public class AsyncTaskHelper extends AsyncTask<Void,Void,Void> {
             jsonArray = jsonObject.getJSONArray("articles");
             Log.i("response","jsonArray:"+jsonArray.toString());
             for (int i=0; i<jsonArray.length(); i++) {
-                JSONObject wallpaper = jsonArray.getJSONObject(i);
-                String title = wallpaper.getString("title");
-                String urlToImage = wallpaper.getString("urlToImage");
-                String description = wallpaper.getString("description");
-                model = new News(title,urlToImage,description);
+                JSONObject jsonFromSource = jsonArray.getJSONObject(i);
+                String title = jsonFromSource.getString("title");
+                String urlToImage = jsonFromSource.getString("urlToImage");
+                String description = jsonFromSource.getString("description");
+                String sourceUrl = jsonFromSource.getString("url");
+                model = new News(title,urlToImage,description,sourceUrl);
                 newsList.add(model);
             }
 

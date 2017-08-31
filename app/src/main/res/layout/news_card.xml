@@ -20,6 +20,7 @@
             />
 
         <RelativeLayout
+            android:id="@+id/rl_card"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:background="@color/transperentBlack">
@@ -40,6 +41,17 @@
 
 
         </RelativeLayout>
+        <LinearLayout
+            android:id="@+id/ll_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#0ff"
+            android:visibility="gone">
+            <TextView
+                android:id="@+id/tv_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
 
     </android.support.v7.widget.CardView>
 

@@ -8,11 +8,13 @@ public class News {
     private String title;
     private String urlToImage;
     private String description;
+    private String sourceUrl;
 
-    public News(String title,String urlToImage,String description){
+    public News(String title,String urlToImage,String description,String sourceUrl){
         this.title = title;
         this.urlToImage = urlToImage;
         this.description = description;
+        this.sourceUrl = sourceUrl;
     }
 
     public String getTitle() {
@@ -37,5 +39,13 @@ public class News {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getSourceUrl() {
+        return sourceUrl;
+    }
+
+    public void setSourceUrl(String sourceUrl) {
+        this.sourceUrl = sourceUrl;
     }
 }
