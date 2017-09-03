@@ -12,6 +12,9 @@ import android.support.v7.app.NotificationCompat;
 import com.evernote.android.job.Job;
 import com.evernote.android.job.JobRequest;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -53,17 +56,25 @@ public class NewsJob extends Job {
         for (String aNewsSourceList : NewsSouce.newsSourceList) {
             NetworkCalls nc = new NetworkCalls();
             String jsonStr = nc.getServerCall(Apis.getHitUrl(aNewsSourceList));
-            SharedPrefHelper.saveJsonOffline(context.getApplicationContext(), jsonStr,aNewsSourceList);
-        }
+            try {
+                JSONObject jsonObject = new JSONObject(jsonStr);
+                if (jsonObject.getString("status").equalsIgnoreCase("ok")) {
+                    SharedPrefHelper.saveJsonOffline(context.getApplicationContext(), jsonStr, aNewsSourceList);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
 
+            }
+        }
         return Result.SUCCESS;
     }
 
     public static void schedulePeriodic() {
         new JobRequest.Builder(NewsJob.TAG)
-                .setPeriodic(TimeUnit.MINUTES.toMillis(15), TimeUnit.MINUTES.toMillis(5))
+                .setPeriodic(TimeUnit.HOURS.toMillis(8), TimeUnit.HOURS.toMillis(1))
                 .setUpdateCurrent(true)
                 .setPersisted(true)
+                .setRequiredNetworkType(JobRequest.NetworkType.CONNECTED)
                 .build()
                 .schedule();
     }
