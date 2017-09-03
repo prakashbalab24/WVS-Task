@@ -31,7 +31,7 @@
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:tabMode="fixed"
+            app:tabMode="scrollable"
             app:tabTextColor="@android:color/holo_red_dark"
             app:tabSelectedTextColor="@android:color/holo_red_light"
             app:tabGravity="fill"/>

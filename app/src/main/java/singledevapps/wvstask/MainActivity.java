@@ -9,11 +9,15 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
 
+import com.evernote.android.job.JobManager;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import singledevapps.wvstask.fragments.NewsFragment;
-
+import singledevapps.wvstask.helper.NewsSouce;
+import singledevapps.wvstask.sync.NewsJob;
+import singledevapps.wvstask.sync.NewsJobCreator;
 
 public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
@@ -24,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        NewsJob.schedulePeriodic();
 
 //        toolbar = (Toolbar) findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
@@ -38,10 +43,13 @@ public class MainActivity extends AppCompatActivity {
     }
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        for (String aNewsSourceList : NewsSouce.newsSourceList) {
+            adapter.addFragment(NewsFragment.instance(aNewsSourceList), aNewsSourceList);
+        }
         adapter.addFragment(NewsFragment.instance("bbc-news"),"BBC");
         adapter.addFragment(NewsFragment.instance("espn"),"ESPN");
         adapter.addFragment(NewsFragment.instance("techcrunch"),"TECH CRUNCH");
-        viewPager.setOffscreenPageLimit(3);
+        viewPager.setOffscreenPageLimit(2);
         viewPager.setAdapter(adapter);
     }
     class ViewPagerAdapter extends FragmentPagerAdapter {

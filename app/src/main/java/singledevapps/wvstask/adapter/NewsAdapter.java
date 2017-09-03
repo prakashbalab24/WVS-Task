@@ -1,25 +1,18 @@
 package singledevapps.wvstask.adapter;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import com.squareup.picasso.Picasso;
-
 import java.util.List;
-
-import jp.wasabeef.picasso.transformations.BlurTransformation;
 import singledevapps.wvstask.R;
 import singledevapps.wvstask.activities.NewsBrowser;
-import singledevapps.wvstask.activities.NewsDescription_Activity;
 import singledevapps.wvstask.helper.NetworkHelper;
 import singledevapps.wvstask.model.News;
 import singledevapps.wvstask.parallaxrecyclerview.ParallaxViewHolder;
@@ -73,7 +66,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
         holder.desc.setText(news.getDescription());
         if (!news.getUrlToImage().isEmpty()) {
            // Picasso.with(mContext).load(news.getUrlToImage()).transform(new BlurTransformation(mContext)).into(holder.getBackgroundImage());
-            Picasso.with(mContext).load(news.getUrlToImage()).centerCrop().fit().into(holder.getBackgroundImage());
+            Picasso.with(mContext).load(news.getUrlToImage()).resize(300,400).into(holder.getBackgroundImage());
         }
         holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
