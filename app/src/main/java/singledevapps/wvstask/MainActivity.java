@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         adapter.addFragment(NewsFragment.instance("bbc-news"),"BBC");
         adapter.addFragment(NewsFragment.instance("espn"),"ESPN");
         adapter.addFragment(NewsFragment.instance("techcrunch"),"TECH CRUNCH");
-        viewPager.setOffscreenPageLimit(2);
+        viewPager.setOffscreenPageLimit(3);
         viewPager.setAdapter(adapter);
     }
     class ViewPagerAdapter extends FragmentPagerAdapter {

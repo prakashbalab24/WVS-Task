@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ProgressBar;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -22,7 +23,6 @@ public class SplashScreen extends AppCompatActivity {
     private static final int SPLASH_DISPLAY_LENGTH = 2000;
     private Handler handler;
     private Runnable runnable;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +42,12 @@ public class SplashScreen extends AppCompatActivity {
 
    private class LoadNews extends AsyncTask<Void,Void,Void>{
 
-    @Override
+       @Override
+       protected void onPostExecute(Void aVoid) {
+           super.onPostExecute(aVoid);
+       }
+
+       @Override
         protected Void doInBackground(Void... params) {
             if (NetworkHelper.checkConnection(SplashScreen.this)) {
                 for (String aNewsSourceList : NewsSouce.newsSourceList) {
