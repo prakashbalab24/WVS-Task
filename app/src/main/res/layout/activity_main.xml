@@ -34,6 +34,7 @@
             app:tabMode="scrollable"
             app:tabTextColor="@android:color/holo_red_dark"
             app:tabSelectedTextColor="@android:color/holo_red_light"
+            app:tabIndicatorColor="@android:color/holo_red_light"
             app:tabGravity="fill"/>
         <android.support.v4.view.ViewPager
             android:id="@+id/viewpager"

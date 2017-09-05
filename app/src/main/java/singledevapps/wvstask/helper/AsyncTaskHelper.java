@@ -10,6 +10,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.List;
 
+import singledevapps.wvstask.R;
 import singledevapps.wvstask.fragments.ResponseListner;
 import singledevapps.wvstask.model.News;
 
@@ -36,7 +37,7 @@ public class AsyncTaskHelper extends AsyncTask<Void,Void,Void> {
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        pDialog = new ProgressDialog(context);
+        pDialog = new ProgressDialog(context, R.style.AppCompatAlertDialogStyle);
         pDialog.setMessage("Please wait...");
         pDialog.setCancelable(false);
         pDialog.show();
