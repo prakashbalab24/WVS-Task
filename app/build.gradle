@@ -32,5 +32,6 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:25.2.0'
     compile 'jp.wasabeef:picasso-transformations:2.1.2'
     compile 'com.evernote:android-job:1.1.11'
+    compile 'uk.co.chrisjenx:calligraphy:2.3.0'
     testCompile 'junit:junit:4.12'
 }

@@ -42,7 +42,7 @@ public class NewsJob extends Job {
 
         Notification notification = new NotificationCompat.Builder(getContext())
                 .setContentTitle("News Headlines")
-                .setContentText("Notification from Android Job Demo App.")
+                .setContentText("News Updated")
                 .setAutoCancel(true)
                 .setContentIntent(pi)
                 .setSmallIcon(R.mipmap.ic_launcher)
@@ -71,7 +71,7 @@ public class NewsJob extends Job {
 
     public static void schedulePeriodic() {
         new JobRequest.Builder(NewsJob.TAG)
-                .setPeriodic(TimeUnit.HOURS.toMillis(8), TimeUnit.HOURS.toMillis(1))
+                .setPeriodic(TimeUnit.HOURS.toMillis(8), TimeUnit.MINUTES.toMillis(20))
                 .setUpdateCurrent(true)
                 .setPersisted(true)
                 .setRequiredNetworkType(JobRequest.NetworkType.CONNECTED)

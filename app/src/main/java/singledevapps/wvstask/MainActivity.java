@@ -1,4 +1,5 @@
 package singledevapps.wvstask;
+import android.content.Context;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -18,6 +19,7 @@ import singledevapps.wvstask.fragments.NewsFragment;
 import singledevapps.wvstask.helper.NewsSouce;
 import singledevapps.wvstask.sync.NewsJob;
 import singledevapps.wvstask.sync.NewsJobCreator;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
@@ -79,6 +81,11 @@ public class MainActivity extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             return mFragmentTitleList.get(position);
         }
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
 
