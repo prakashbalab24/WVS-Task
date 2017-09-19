@@ -21,8 +21,8 @@ import java.util.concurrent.TimeUnit;
 import singledevapps.wvstask.MainActivity;
 import singledevapps.wvstask.R;
 import singledevapps.wvstask.helper.Apis;
-import singledevapps.wvstask.helper.NetworkCalls;
-import singledevapps.wvstask.helper.NewsSouce;
+import singledevapps.wvstask.model.data.remote.NetworkCalls;
+import singledevapps.wvstask.model.data.remote.NewsSouce;
 import singledevapps.wvstask.helper.SharedPrefHelper;
 
 

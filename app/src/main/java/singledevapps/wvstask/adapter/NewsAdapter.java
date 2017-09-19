@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -37,6 +38,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
         public RelativeLayout relativeLayout;
         public LinearLayout linearLayout;
         public CardView parentCard;
+        public ImageView share;
 
         @Override
         public int getParallaxImageId() {
@@ -50,6 +52,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
             linearLayout = (LinearLayout) view.findViewById(R.id.ll_desc);
             desc = (TextView) view.findViewById(R.id.tv_desc);
             parentCard = (CardView) view.findViewById(R.id.parentCard);
+            share = (ImageView) view.findViewById(R.id.iv_share);
 
         }
     }
@@ -94,9 +97,9 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
             }
         });
 
-        holder.relativeLayout.setOnLongClickListener(new View.OnLongClickListener() {
+        holder.share.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onLongClick(View v) {
+            public void onClick(View v) {
                 try {
 
                     File cachePath = new File(mContext.getCacheDir(), "images");
@@ -110,7 +113,6 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                return false;
             }
         });
 //        holder.bck.setOnClickListener(new View.OnClickListener() {

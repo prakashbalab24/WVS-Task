@@ -5,8 +5,6 @@ import android.os.AsyncTask;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ProgressBar;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -14,9 +12,9 @@ import org.json.JSONObject;
 import singledevapps.wvstask.MainActivity;
 import singledevapps.wvstask.R;
 import singledevapps.wvstask.helper.Apis;
-import singledevapps.wvstask.helper.NetworkCalls;
+import singledevapps.wvstask.model.data.remote.NetworkCalls;
 import singledevapps.wvstask.helper.NetworkHelper;
-import singledevapps.wvstask.helper.NewsSouce;
+import singledevapps.wvstask.model.data.remote.NewsSouce;
 import singledevapps.wvstask.helper.SharedPrefHelper;
 
 public class SplashScreen extends AppCompatActivity {

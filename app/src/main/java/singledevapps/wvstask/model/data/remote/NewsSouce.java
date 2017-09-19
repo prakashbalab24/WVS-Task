@@ -1,4 +1,4 @@
-package singledevapps.wvstask.helper;
+package singledevapps.wvstask.model.data.remote;
 
 /**
  * Created by prakash on 2/9/17.

@@ -5,16 +5,21 @@ package singledevapps.wvstask.model;
  */
 
 public class News {
+    private String newsSouce;
     private String title;
     private String urlToImage;
     private String description;
     private String sourceUrl;
 
-    public News(String title,String urlToImage,String description,String sourceUrl){
+    public News(String newsSouce, String title,String urlToImage,String description,String sourceUrl){
+        this.newsSouce = newsSouce;
         this.title = title;
         this.urlToImage = urlToImage;
         this.description = description;
         this.sourceUrl = sourceUrl;
+    }
+    public News(){
+
     }
 
     public String getTitle() {
@@ -47,5 +52,13 @@ public class News {
 
     public void setSourceUrl(String sourceUrl) {
         this.sourceUrl = sourceUrl;
+    }
+
+    public String getNewsSouce() {
+        return newsSouce;
+    }
+
+    public void setNewsSouce(String newsSouce) {
+        this.newsSouce = newsSouce;
     }
 }

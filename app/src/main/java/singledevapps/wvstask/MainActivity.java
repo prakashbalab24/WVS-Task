@@ -10,15 +10,12 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
 
-import com.evernote.android.job.JobManager;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import singledevapps.wvstask.fragments.NewsFragment;
-import singledevapps.wvstask.helper.NewsSouce;
+import singledevapps.wvstask.model.data.remote.NewsSouce;
 import singledevapps.wvstask.sync.NewsJob;
-import singledevapps.wvstask.sync.NewsJobCreator;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class MainActivity extends AppCompatActivity {

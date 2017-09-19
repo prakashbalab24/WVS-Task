@@ -1,4 +1,4 @@
-package singledevapps.wvstask.helper;
+package singledevapps.wvstask.model.data.remote;
 
 import android.content.Context;
 

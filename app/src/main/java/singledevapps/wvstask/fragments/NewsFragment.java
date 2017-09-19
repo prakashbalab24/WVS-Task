@@ -2,29 +2,19 @@ package singledevapps.wvstask.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.List;
 
-import singledevapps.wvstask.MainActivity;
 import singledevapps.wvstask.R;
 import singledevapps.wvstask.adapter.NewsAdapter;
-import singledevapps.wvstask.helper.AsyncTaskHelper;
+import singledevapps.wvstask.model.data.remote.AsyncTaskHelper;
 import singledevapps.wvstask.model.News;
 import singledevapps.wvstask.parallaxrecyclerview.ParallaxRecyclerView;
-import singledevapps.wvstask.parallaxrecyclerview.ParallaxViewHolder;
 
 
 public class NewsFragment extends Fragment implements ResponseListner{
