@@ -23,6 +23,10 @@ public class NewsFragment extends Fragment implements ResponseListner{
     private NewsAdapter adapter;
     private List<News> newsList;
     private News model;
+    private String source = "";
+
+    private Boolean isStarted = false;
+    private Boolean isVisible = false;
 
     public NewsFragment() {
         // Required empty public constructor
@@ -37,6 +41,15 @@ public class NewsFragment extends Fragment implements ResponseListner{
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+        isStarted = true;
+        if (isVisible && isStarted){
+            viewDidAppear();
+        }
+    }
+
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
@@ -47,7 +60,7 @@ public class NewsFragment extends Fragment implements ResponseListner{
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_news, container, false);
         recyclerView = (ParallaxRecyclerView) rootView.findViewById(R.id.recyclerview);
-        String source = getArguments().getString(URL);
+        source = getArguments().getString(URL);
 
         newsList = new ArrayList<>();
         adapter = new NewsAdapter(getContext(), newsList);
@@ -60,8 +73,19 @@ public class NewsFragment extends Fragment implements ResponseListner{
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
 
-        new AsyncTaskHelper(this,newsList,source, getContext()).execute();
         return rootView;
+    }
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        isVisible = isVisibleToUser;
+        if (isStarted && isVisible) {
+            viewDidAppear();
+        }
+    }
+
+    private void viewDidAppear() {
+        new AsyncTaskHelper(this,newsList,source, getContext()).execute();
     }
 
 

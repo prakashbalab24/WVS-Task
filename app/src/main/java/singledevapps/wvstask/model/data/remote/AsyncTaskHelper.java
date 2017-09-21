@@ -67,6 +67,9 @@ public class AsyncTaskHelper extends AsyncTask<Void,Void,Void> {
                             model = new News(source,title,urlToImage,description,sourceUrl);
                             newsList.add(model);
                         }
+                        if(newsList.size()>0){
+                            new DatabaseHandler(context).deleteAll();
+                        }
                         new DatabaseHandler(context).addNewsintoTable(newsList);
 
                     }

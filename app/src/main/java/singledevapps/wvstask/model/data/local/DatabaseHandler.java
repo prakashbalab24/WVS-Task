@@ -32,20 +32,19 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	// Creating Tables
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-		String CREATE_news_TABLE = "CREATE TABLE " + TABLE_ALLNEWS + "("
+		String CREATE_NEWS_TABLE = "CREATE TABLE " + TABLE_ALLNEWS + "("
 				+ KEY_ID + " INTEGER PRIMARY KEY,"
 				+ KEY_NEWS_SOURCE + " TEXT,"
 				+ KEY_TITLE + " TEXT,"
 				+ KEY_URL + " TEXT,"
 				+ KEY_IMAGE_URL + " TEXT,"
 				+ KEY_DESCRIPTION + " TEXT" + ")";
-		db.execSQL(CREATE_news_TABLE);
+		db.execSQL(CREATE_NEWS_TABLE);
 	}
 	
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-		db.execSQL("DROP TABLE IF EXISTS " + TABLE_ALLNEWS);
-		onCreate(db);
+		deleteAll();
 	}
 
 	/**
@@ -112,6 +111,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 		// return count
 		return i;
+	}
+
+	public void deleteAll() {
+		SQLiteDatabase db = this.getWritableDatabase();
+		db.execSQL("DROP TABLE IF EXISTS " + TABLE_ALLNEWS);
+		onCreate(db);
 	}
 
 //	public List<News> getCategoryNews(String category) {
