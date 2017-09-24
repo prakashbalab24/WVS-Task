@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -38,7 +39,8 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
         public RelativeLayout relativeLayout;
         public LinearLayout linearLayout;
         public CardView parentCard;
-        public ImageView share;
+        public TextView share;
+        public LinearLayout more;
 
         @Override
         public int getParallaxImageId() {
@@ -52,7 +54,8 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
             linearLayout = (LinearLayout) view.findViewById(R.id.ll_desc);
             desc = (TextView) view.findViewById(R.id.tv_desc);
             parentCard = (CardView) view.findViewById(R.id.parentCard);
-            share = (ImageView) view.findViewById(R.id.iv_share);
+            share = (TextView) view.findViewById(R.id.iv_share);
+            more = (LinearLayout) view.findViewById(R.id.more);
 
         }
     }
@@ -78,28 +81,29 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
         holder.desc.setText(news.getDescription());
         if (!news.getUrlToImage().isEmpty()) {
            // Picasso.with(mContext).load(news.getUrlToImage()).transform(new BlurTransformation(mContext)).into(holder.getBackgroundImage());
-            Picasso.with(mContext).load(news.getUrlToImage()).resize(300,300).into(holder.getBackgroundImage());
+            Picasso.with(mContext).load(news.getUrlToImage()).resize(300,300).centerCrop().into(holder.getBackgroundImage());
         }
         holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (NetworkHelper.checkConnection(mContext)){
-                    Intent intent = new Intent(mContext, NewsBrowser.class);
-                    intent.putExtra("url",news.getSourceUrl());
-                    mContext.startActivity(intent);
+//                if (NetworkHelper.checkConnection(mContext)){
+//                    Intent intent = new Intent(mContext, NewsBrowser.class);
+//                    intent.putExtra("url",news.getSourceUrl());
+//                    mContext.startActivity(intent);
+//                    return;
+//                }
+                if(holder.more.getVisibility()== View.VISIBLE) {
+                    holder.more.setVisibility(View.GONE);
                     return;
                 }
-                if(holder.linearLayout.getVisibility()== View.VISIBLE) {
-                    holder.linearLayout.setVisibility(View.GONE);
-                    return;
-                }
-                holder.linearLayout.setVisibility(View.VISIBLE);
+                holder.more.setVisibility(View.VISIBLE);
             }
         });
 
         holder.share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                holder.more.setVisibility(View.INVISIBLE);
                 try {
 
                     File cachePath = new File(mContext.getCacheDir(), "images");
