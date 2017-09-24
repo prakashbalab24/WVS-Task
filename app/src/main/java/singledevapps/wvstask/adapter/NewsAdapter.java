@@ -89,15 +89,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
         holder.showmore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (holder.desc.getVisibility()==View.VISIBLE){
-                    holder.desc.setVisibility(View.GONE);
-                    holder.title.setVisibility(View.VISIBLE);
-                    holder.showmore.setText("Show More");
-                    return;
-                }
-                holder.desc.setVisibility(View.VISIBLE);
-                holder.title.setVisibility(View.GONE);
-                holder.showmore.setText("Show Less");
+
             }
         });
 
@@ -119,9 +111,15 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
             public void onClick(View v) {
                 if(holder.more.getVisibility()== View.VISIBLE) {
                     holder.more.setVisibility(View.GONE);
+                    holder.desc.setVisibility(View.GONE);
+                    holder.title.setVisibility(View.VISIBLE);
+                    holder.showmore.setText("Show More");
                     return;
                 }
                 holder.more.setVisibility(View.VISIBLE);
+                holder.desc.setVisibility(View.VISIBLE);
+                holder.title.setVisibility(View.GONE);
+                holder.showmore.setText("Show Less");
             }
         });
 
