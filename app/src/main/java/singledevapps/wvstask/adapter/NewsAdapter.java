@@ -13,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -33,13 +35,13 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
 
     private Context mContext;
     private List<News> newsList;
+    private boolean showFull = false;
 
     public class MyViewHolder extends ParallaxViewHolder {
         public TextView title,desc;
         public RelativeLayout relativeLayout;
-        public LinearLayout linearLayout;
         public CardView parentCard;
-        public TextView share;
+        public TextView share,showmore,full;
         public LinearLayout more;
 
         @Override
@@ -51,10 +53,11 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
             super(view);
             title = (TextView) view.findViewById(R.id.title);
             relativeLayout = (RelativeLayout) view.findViewById(R.id.rl_card);
-            linearLayout = (LinearLayout) view.findViewById(R.id.ll_desc);
             desc = (TextView) view.findViewById(R.id.tv_desc);
             parentCard = (CardView) view.findViewById(R.id.parentCard);
             share = (TextView) view.findViewById(R.id.iv_share);
+            showmore = (TextView) view.findViewById(R.id.tv_showmore);
+            full = (TextView) view.findViewById(R.id.tv_full);
             more = (LinearLayout) view.findViewById(R.id.more);
 
         }
@@ -83,15 +86,37 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
            // Picasso.with(mContext).load(news.getUrlToImage()).transform(new BlurTransformation(mContext)).into(holder.getBackgroundImage());
             Picasso.with(mContext).load(news.getUrlToImage()).resize(300,300).centerCrop().into(holder.getBackgroundImage());
         }
+        holder.showmore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (holder.desc.getVisibility()==View.VISIBLE){
+                    holder.desc.setVisibility(View.GONE);
+                    holder.title.setVisibility(View.VISIBLE);
+                    holder.showmore.setText("Show More");
+                    return;
+                }
+                holder.desc.setVisibility(View.VISIBLE);
+                holder.title.setVisibility(View.GONE);
+                holder.showmore.setText("Show Less");
+            }
+        });
+
+        holder.full.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (NetworkHelper.checkConnection(mContext)){
+                    Intent intent = new Intent(mContext, NewsBrowser.class);
+                    intent.putExtra("url",news.getSourceUrl());
+                    mContext.startActivity(intent);
+                }
+                else {
+                    Toast.makeText(mContext,"No Internet!",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
         holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                if (NetworkHelper.checkConnection(mContext)){
-//                    Intent intent = new Intent(mContext, NewsBrowser.class);
-//                    intent.putExtra("url",news.getSourceUrl());
-//                    mContext.startActivity(intent);
-//                    return;
-//                }
                 if(holder.more.getVisibility()== View.VISIBLE) {
                     holder.more.setVisibility(View.GONE);
                     return;
