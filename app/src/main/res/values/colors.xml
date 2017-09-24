@@ -5,4 +5,7 @@
     <color name="colorAccent">#fff</color>
     <color name="colorcpw">#8fff</color>
     <color name="transperentBlack">#80000000</color>
+
+    <color name="colorPrimary2">#661A7A</color>
+    <color name="colorAccent2">#AB156C</color>
 </resources>

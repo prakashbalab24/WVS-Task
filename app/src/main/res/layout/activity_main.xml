@@ -32,9 +32,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:tabMode="scrollable"
-            app:tabTextColor="@android:color/holo_red_dark"
-            app:tabSelectedTextColor="@android:color/holo_red_light"
-            app:tabIndicatorColor="@android:color/holo_red_light"
+            app:tabTextColor="@color/colorPrimary2"
+            app:tabSelectedTextColor="@color/colorAccent2"
+            app:tabIndicatorColor="@color/colorAccent2"
             app:tabGravity="fill"/>
         <android.support.v4.view.ViewPager
             android:id="@+id/viewpager"
