@@ -72,7 +72,7 @@ public class NewsFragment extends Fragment implements ResponseListner{
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
-
+        new AsyncTaskHelper(this,newsList,source, getContext()).execute();
         return rootView;
     }
     @Override
@@ -85,7 +85,7 @@ public class NewsFragment extends Fragment implements ResponseListner{
     }
 
     private void viewDidAppear() {
-        new AsyncTaskHelper(this,newsList,source, getContext()).execute();
+//        new AsyncTaskHelper(this,newsList,source, getContext()).execute();
     }
 
 

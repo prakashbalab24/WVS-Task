@@ -119,6 +119,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		onCreate(db);
 	}
 
+	public void clearOldNews(String source){
+		SQLiteDatabase db = this.getWritableDatabase();
+		db.execSQL("DELETE FROM "+TABLE_ALLNEWS+" WHERE "+KEY_NEWS_SOURCE+"='"+source+"'");
+	}
+
 //	public List<News> getCategoryNews(String category) {
 //		List<News> newsList = new ArrayList<News>();
 //		SQLiteDatabase db = this.getWritableDatabase();
