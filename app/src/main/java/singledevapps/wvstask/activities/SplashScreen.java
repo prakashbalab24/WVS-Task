@@ -39,7 +39,7 @@ public class SplashScreen extends AppCompatActivity {
         handler2.postDelayed(runnable2 = new Runnable(){
             @Override
             public void run() {
-                Toast.makeText(SplashScreen.this,"Slow Internet, Please Wait",Toast.LENGTH_LONG).show();
+                Toast.makeText(SplashScreen.this,"Slow Internet, Please Wait!!",Toast.LENGTH_LONG).show();
             }
         }, NETSLOW);
 
