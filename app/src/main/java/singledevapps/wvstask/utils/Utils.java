@@ -17,6 +17,8 @@ import singledevapps.wvstask.R;
  */
 
 public class Utils {
+    private static int someColor[] = {R.color.color1,R.color.color2,R.color.color3,R.color.color4,R.color.color5};
+    private static int i = 0;
 
     public static Bitmap takeScreenShot(View view) {
         view.setDrawingCacheEnabled(true);
@@ -53,5 +55,14 @@ public class Utils {
         Vibrator v = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
         // Vibrate for 500 milliseconds
         v.vibrate(50);
+    }
+
+    public static int bckColor(){
+        if (i>=5){
+            i = 0;
+        }
+        int j = i;
+        i++;
+        return someColor[j];
     }
 }

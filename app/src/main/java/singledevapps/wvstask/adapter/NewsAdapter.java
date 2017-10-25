@@ -25,6 +25,7 @@ import singledevapps.wvstask.R;
 import singledevapps.wvstask.activities.NewsBrowser;
 import singledevapps.wvstask.helper.NetworkHelper;
 import singledevapps.wvstask.model.News;
+import singledevapps.wvstask.parallaxrecyclerview.ParallaxImageView;
 import singledevapps.wvstask.parallaxrecyclerview.ParallaxViewHolder;
 import singledevapps.wvstask.utils.Utils;
 
@@ -43,6 +44,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
         public CardView parentCard;
         public TextView share,showmore,full;
         public LinearLayout more;
+        public ParallaxImageView bck;
 
         @Override
         public int getParallaxImageId() {
@@ -55,6 +57,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
             relativeLayout = (RelativeLayout) view.findViewById(R.id.rl_card);
             desc = (TextView) view.findViewById(R.id.tv_desc);
             parentCard = (CardView) view.findViewById(R.id.parentCard);
+            bck = (ParallaxImageView) view.findViewById(R.id.background);
             share = (TextView) view.findViewById(R.id.iv_share);
             showmore = (TextView) view.findViewById(R.id.tv_showmore);
             full = (TextView) view.findViewById(R.id.tv_full);
@@ -81,6 +84,8 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
     public void onBindViewHolder(final MyViewHolder holder, int position) {
         final News news = newsList.get(position);
         holder.title.setText(news.getTitle());
+
+        holder.bck.setBackgroundColor(mContext.getResources().getColor(Utils.bckColor()));
         holder.desc.setText(news.getDescription());
         if (!news.getUrlToImage().isEmpty()) {
            // Picasso.with(mContext).load(news.getUrlToImage()).transform(new BlurTransformation(mContext)).into(holder.getBackgroundImage());
