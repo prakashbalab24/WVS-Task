@@ -1,4 +1,4 @@
-package singledevapps.wvstask.parallaxrecyclerview;
+package singledevapps.wvstask.helper.ui.parallaxrecyclerview;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;

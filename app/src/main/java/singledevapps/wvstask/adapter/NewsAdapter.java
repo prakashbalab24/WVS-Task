@@ -8,8 +8,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -25,8 +23,8 @@ import singledevapps.wvstask.R;
 import singledevapps.wvstask.activities.NewsBrowser;
 import singledevapps.wvstask.helper.NetworkHelper;
 import singledevapps.wvstask.model.News;
-import singledevapps.wvstask.parallaxrecyclerview.ParallaxImageView;
-import singledevapps.wvstask.parallaxrecyclerview.ParallaxViewHolder;
+import singledevapps.wvstask.helper.ui.parallaxrecyclerview.ParallaxImageView;
+import singledevapps.wvstask.helper.ui.parallaxrecyclerview.ParallaxViewHolder;
 import singledevapps.wvstask.utils.Utils;
 
 /**

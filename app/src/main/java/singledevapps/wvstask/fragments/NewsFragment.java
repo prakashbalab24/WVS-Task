@@ -14,7 +14,7 @@ import singledevapps.wvstask.R;
 import singledevapps.wvstask.adapter.NewsAdapter;
 import singledevapps.wvstask.model.data.remote.AsyncTaskHelper;
 import singledevapps.wvstask.model.News;
-import singledevapps.wvstask.parallaxrecyclerview.ParallaxRecyclerView;
+import singledevapps.wvstask.helper.ui.parallaxrecyclerview.ParallaxRecyclerView;
 
 
 public class NewsFragment extends Fragment implements ResponseListner{

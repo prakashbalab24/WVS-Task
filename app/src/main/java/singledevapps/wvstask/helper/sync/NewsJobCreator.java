@@ -1,4 +1,4 @@
-package singledevapps.wvstask.sync;
+package singledevapps.wvstask.helper.sync;
 
 import android.content.Context;
 

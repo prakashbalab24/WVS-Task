@@ -4,7 +4,7 @@ import android.app.Application;
 
 import com.evernote.android.job.JobManager;
 
-import singledevapps.wvstask.sync.NewsJobCreator;
+import singledevapps.wvstask.helper.sync.NewsJobCreator;
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 /**

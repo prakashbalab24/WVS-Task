@@ -12,7 +12,7 @@
         card_view:cardUseCompatPadding="true"
         card_view:cardElevation="14dp"
         card_view:cardCornerRadius="5dp">
-        <singledevapps.wvstask.parallaxrecyclerview.ParallaxImageView
+        <singledevapps.wvstask.helper.ui.parallaxrecyclerview.ParallaxImageView
             android:id="@+id/background"
             android:layout_width="match_parent"
             android:layout_height="400dp"

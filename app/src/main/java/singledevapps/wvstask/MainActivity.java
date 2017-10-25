@@ -15,7 +15,7 @@ import java.util.List;
 
 import singledevapps.wvstask.fragments.NewsFragment;
 import singledevapps.wvstask.model.data.remote.NewsSouce;
-import singledevapps.wvstask.sync.NewsJob;
+import singledevapps.wvstask.helper.sync.NewsJob;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class MainActivity extends AppCompatActivity {

@@ -1,4 +1,4 @@
-package singledevapps.wvstask.sync;
+package singledevapps.wvstask.helper.sync;
 
 import android.app.Notification;
 import android.app.PendingIntent;
@@ -24,13 +24,11 @@ import java.util.concurrent.TimeUnit;
 
 import singledevapps.wvstask.MainActivity;
 import singledevapps.wvstask.R;
-import singledevapps.wvstask.activities.SplashScreen;
 import singledevapps.wvstask.helper.Apis;
 import singledevapps.wvstask.model.News;
 import singledevapps.wvstask.model.data.local.DatabaseHandler;
 import singledevapps.wvstask.model.data.remote.NetworkCalls;
 import singledevapps.wvstask.model.data.remote.NewsSouce;
-import singledevapps.wvstask.helper.SharedPrefHelper;
 
 
 public class NewsJob extends Job {
