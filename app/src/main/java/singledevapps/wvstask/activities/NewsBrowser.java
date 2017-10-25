@@ -2,6 +2,7 @@ package singledevapps.wvstask.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
@@ -19,6 +20,7 @@ public class NewsBrowser extends AppCompatActivity {
         webView.canGoBack();
         webView.getSettings().setJavaScriptEnabled(true);
         String url = getIntent().getStringExtra("url");
+        Log.i("urlfromintent","url:"+url);
         if (url==null){
             showMsg();
             finish();
