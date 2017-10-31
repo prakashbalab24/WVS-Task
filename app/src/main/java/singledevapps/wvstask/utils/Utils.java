@@ -39,7 +39,6 @@ public class Utils {
         Uri contentUri = FileProvider.getUriForFile(context, "singledevapps.wvstask.fileprovider", newFile);
 
         if (contentUri != null) {
-            makeVibrate(context);
             Intent shareIntent = new Intent();
             shareIntent.setAction(Intent.ACTION_SEND);
             shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION); // temp permission for receiving app to read this file
@@ -50,12 +49,12 @@ public class Utils {
             context.startActivity(Intent.createChooser(shareIntent, "Choose an app"));
         }
     }
-
-    public static void makeVibrate(Context context){
-        Vibrator v = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
-        // Vibrate for 500 milliseconds
-        v.vibrate(50);
-    }
+//
+//    public static void makeVibrate(Context context){
+//        Vibrator v = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
+//        // Vibrate for 500 milliseconds
+//        v.vibrate(50);
+//    }
 
     public static int bckColor(){
         if (i>=5){
