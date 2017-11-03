@@ -19,7 +19,7 @@ import singledevapps.wvstask.helper.sync.NewsJob;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class MainActivity extends AppCompatActivity {
-    private Toolbar toolbar;
+//    private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
 

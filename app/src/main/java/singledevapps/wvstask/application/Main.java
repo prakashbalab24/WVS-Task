@@ -1,9 +1,10 @@
-package singledevapps.wvstask;
+package singledevapps.wvstask.application;
 
 import android.app.Application;
 
 import com.evernote.android.job.JobManager;
 
+import singledevapps.wvstask.R;
 import singledevapps.wvstask.helper.sync.NewsJobCreator;
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
