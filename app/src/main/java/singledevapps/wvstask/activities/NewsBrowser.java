@@ -33,4 +33,10 @@ public class NewsBrowser extends AppCompatActivity {
     private void showMsg(){
         Toast.makeText(NewsBrowser.this,"Oops! Something went wrong!!",Toast.LENGTH_LONG).show();
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.i("Destroy","Called");
+    }
 }
