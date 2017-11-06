@@ -49,6 +49,19 @@ public class Utils {
             context.startActivity(Intent.createChooser(shareIntent, "Choose an app"));
         }
     }
+
+    public static void shareNewsUrl(Context context,String url) {
+        Intent share = new Intent(android.content.Intent.ACTION_SEND);
+        share.setType("text/plain");
+        share.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+
+        // Add data to the intent, the receiving app will decide
+        // what to do with it.
+        share.putExtra(Intent.EXTRA_SUBJECT, "Title Of The Post");
+        share.putExtra(Intent.EXTRA_TEXT, url +"\n\n\n"+"Shared via Headlines app - https://www.google.com");
+
+        context.startActivity(Intent.createChooser(share, "Share link!"));
+    }
 //
 //    public static void makeVibrate(Context context){
 //        Vibrator v = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
