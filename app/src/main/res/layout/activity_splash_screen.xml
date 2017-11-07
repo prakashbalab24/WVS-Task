@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorAccent"
     tools:context="singledevapps.wvstask.activities.SplashScreen">
 
     <ImageView
@@ -22,7 +23,7 @@
         android:layout_height="300dp"
         app:lottie_fileName="newsanim.json"
         app:lottie_loop="true"
-        app:lottie_colorFilter="#fff"
+        app:lottie_colorFilter="@color/color1"
         app:lottie_autoPlay="true" />
     <TextView
         android:visibility="gone"
