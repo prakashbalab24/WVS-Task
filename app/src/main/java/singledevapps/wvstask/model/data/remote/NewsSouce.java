@@ -6,8 +6,6 @@ package singledevapps.wvstask.model.data.remote;
 
 public class NewsSouce {
     public static String[] newsSourceList={
-            "bbc-news",
-            "bbc-sport",
             "buzzfeed",
             "cnbc",
             "espn",
@@ -22,5 +20,7 @@ public class NewsSouce {
             "time",
             "the-verge",
             "usa-today",
+            "bbc-news",
+            "bbc-sport"
     };
 }
