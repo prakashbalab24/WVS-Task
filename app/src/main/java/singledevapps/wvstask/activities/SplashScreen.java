@@ -90,28 +90,30 @@ protected Void doInBackground(Void... params) {
         for (String aNewsSourceList : NewsSouce.newsSourceList) {
             String jsonStr = nc.getServerCall(Apis.getHitUrl(aNewsSourceList));
             try {
-                JSONObject jsonObject = new JSONObject(jsonStr);
-                if (jsonObject.getString("status").equalsIgnoreCase("ok")) {
-                    JSONArray jsonArray;
-                    jsonObject = new JSONObject(jsonStr);
-                    jsonArray = jsonObject.getJSONArray("articles");
-                    Log.i("response", "jsonArray:" + jsonArray.toString());
-                    newsList = new ArrayList<>();
-                    for (int i = 0; i < jsonArray.length(); i++) {
-                        JSONObject jsonFromSource = jsonArray.getJSONObject(i);
-                        String title = jsonFromSource.getString("title");
-                        String urlToImage = jsonFromSource.getString("urlToImage");
-                        String description = jsonFromSource.getString("description");
-                        String sourceUrl = jsonFromSource.getString("url");
-                        News model = new News(aNewsSourceList, title, urlToImage, description, sourceUrl);
-                        newsList.add(model);
-                    }
-                    if (newsList.size() > 0) {
-                        //new DatabaseHandler(context).deleteAll();
-                        new DatabaseHandler(SplashScreen.this).clearOldNews(aNewsSourceList);
-                    }
-                    new DatabaseHandler(SplashScreen.this).addNewsintoTable(newsList);
+                if(jsonStr!=null) {
+                    JSONObject jsonObject = new JSONObject(jsonStr);
+                    if (jsonObject.getString("status").equalsIgnoreCase("ok")) {
+                        JSONArray jsonArray;
+                        jsonObject = new JSONObject(jsonStr);
+                        jsonArray = jsonObject.getJSONArray("articles");
+                        Log.i("response", "jsonArray:" + jsonArray.toString());
+                        newsList = new ArrayList<>();
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject jsonFromSource = jsonArray.getJSONObject(i);
+                            String title = jsonFromSource.getString("title");
+                            String urlToImage = jsonFromSource.getString("urlToImage");
+                            String description = jsonFromSource.getString("description");
+                            String sourceUrl = jsonFromSource.getString("url");
+                            News model = new News(aNewsSourceList, title, urlToImage, description, sourceUrl);
+                            newsList.add(model);
+                        }
+                        if (newsList.size() > 0) {
+                            //new DatabaseHandler(context).deleteAll();
+                            new DatabaseHandler(SplashScreen.this).clearOldNews(aNewsSourceList);
+                        }
+                        new DatabaseHandler(SplashScreen.this).addNewsintoTable(newsList);
 
+                    }
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
