@@ -95,6 +95,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				newsList.add(News);
 			} while (cursor.moveToNext());
 		}
+		db.close();
 		// return News list
 		Log.i("newsListSize","newsSize:"+newsList.size());
 		return newsList;
@@ -117,11 +118,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		SQLiteDatabase db = this.getWritableDatabase();
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_ALLNEWS);
 		onCreate(db);
+		db.close();
 	}
 
 	public void clearOldNews(String source){
 		SQLiteDatabase db = this.getWritableDatabase();
 		db.execSQL("DELETE FROM "+TABLE_ALLNEWS+" WHERE "+KEY_NEWS_SOURCE+"='"+source+"'");
+		db.close();
 	}
 
 //	public List<News> getCategoryNews(String category) {

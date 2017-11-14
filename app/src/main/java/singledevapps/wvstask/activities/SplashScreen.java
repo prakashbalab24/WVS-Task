@@ -59,30 +59,9 @@ public class SplashScreen extends AppCompatActivity {
             finish();
         }
     }
-
-   private class LoadNews extends AsyncTask<Void,Void,Void>{
+    private class LoadNews extends AsyncTask<Void,Void,Void>{
        private List<News> newsList;
 
-
-//       @Override
-//        protected Void doInBackground(Void... params) {
-//            if (NetworkHelper.checkConnection(SplashScreen.this)) {
-//                for (String aNewsSourceList : NewsSouce.newsSourceList) {
-//                    NetworkCalls nc = new NetworkCalls();
-//                    String jsonStr = nc.getServerCall(Apis.getHitUrl(aNewsSourceList));
-//                    try {
-//                        JSONObject jsonObject = new JSONObject(jsonStr);
-//                        if (jsonObject.getString("status").equalsIgnoreCase("ok")) {
-//                            SharedPrefHelper.saveJsonOffline(SplashScreen.this, jsonStr, aNewsSourceList);
-//                        }
-//                    } catch (JSONException e) {
-//                        e.printStackTrace();
-//
-//                    }
-//                }
-//            }
-//            return null;
-//        }
 @Override
 protected Void doInBackground(Void... params) {
     if (NetworkHelper.checkConnection(SplashScreen.this)) {
@@ -121,11 +100,6 @@ protected Void doInBackground(Void... params) {
             }
         }
     }
-//    else {
-//        List<News> temp = new DatabaseHandler(context).getOfflineNews(source);
-//        Log.i("tempFromDb","tempList:"+temp);
-//        newsList.addAll(temp);
-//    }
 
     return null;
 }
