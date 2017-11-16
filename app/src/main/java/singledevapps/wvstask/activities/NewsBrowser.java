@@ -49,8 +49,15 @@ public class NewsBrowser extends AppCompatActivity {
     }
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.left_to_right, R.anim.right_to_left);
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
+        webView.getSettings().setJavaScriptEnabled(false);
         Log.i("Destroy","Called");
     }
 }

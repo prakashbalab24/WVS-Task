@@ -1,5 +1,6 @@
 package singledevapps.wvstask.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -103,6 +104,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
                     Intent intent = new Intent(mContext, NewsBrowser.class);
                     intent.putExtra("url",news.getSourceUrl());
                     mContext.startActivity(intent);
+                    ((Activity)mContext).overridePendingTransition(R.anim.enter, R.anim.exit);
                 }
                 else {
                     Toast.makeText(mContext,"No Internet!",Toast.LENGTH_SHORT).show();
