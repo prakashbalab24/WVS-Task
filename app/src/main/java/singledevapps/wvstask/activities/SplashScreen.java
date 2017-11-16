@@ -115,6 +115,7 @@ protected Void doInBackground(Void... params) {
                 /* Create an Intent that will start the Menu-Activity. */
                     Intent mainIntent = new Intent(SplashScreen.this, MainActivity.class);
                     startActivity(mainIntent);
+                    overridePendingTransition( R.anim.slide_in_up, R.anim.slide_out_up );
                     finish();
                 }
             }, SPLASH_DISPLAY_LENGTH);
