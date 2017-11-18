@@ -5,8 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import singledevapps.wvstask.R;
@@ -16,13 +18,27 @@ import static singledevapps.wvstask.utils.Utils.shareNewsUrl;
 public class NewsBrowser extends AppCompatActivity {
     private WebView webView;
     private FloatingActionButton fabShareBtn;
+    private ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_browser);
         webView = (WebView) findViewById(R.id.newsWv);
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
         fabShareBtn = (FloatingActionButton) findViewById(R.id.fabShare);
         webView.setWebViewClient(new WebViewClient());
+        webView.setWebChromeClient(new WebChromeClient() {
+            public void onProgressChanged(WebView view, int progress) {
+                progressBar.setProgress(progress);
+                if (progress >=80) {
+                    progressBar.setVisibility(View.GONE);
+
+                } else {
+                    progressBar.setVisibility(View.VISIBLE);
+
+                }
+            }
+        });
         webView.canGoBack();
         webView.getSettings().setJavaScriptEnabled(true);
         final String url = getIntent().getStringExtra("url");
