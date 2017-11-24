@@ -43,35 +43,9 @@ public class NewsJob extends Job {
     @NonNull
     @Override
     protected Result onRunJob(Params params) {
-        PendingIntent pi = PendingIntent.getActivity(getContext(), 0,
-                new Intent(getContext(), MainActivity.class), 0);
 
-        Notification notification = new NotificationCompat.Builder(getContext())
-                .setContentTitle("News Headlines")
-                .setContentText("News Updated")
-                .setAutoCancel(true)
-                .setContentIntent(pi)
-                .setSmallIcon(R.mipmap.ic_launcher)
-                .setShowWhen(true)
-                .setColor(Color.RED)
-                .setLocalOnly(true)
-                .build();
+     // showNotification();
 
-        NotificationManagerCompat.from(getContext())
-                .notify(new Random().nextInt(), notification);
-//        for (String aNewsSourceList : NewsSouce.newsSourceList) {
-//            NetworkCalls nc = new NetworkCalls();
-//            String jsonStr = nc.getServerCall(Apis.getHitUrl(aNewsSourceList));
-//            try {
-//                JSONObject jsonObject = new JSONObject(jsonStr);
-//                if (jsonObject.getString("status").equalsIgnoreCase("ok")) {
-//                    SharedPrefHelper.saveJsonOffline(context.getApplicationContext(), jsonStr, aNewsSourceList);
-//                }
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//
-//            }
-//        }
         for (String aNewsSourceList : NewsSouce.newsSourceList) {
             NetworkCalls nc = new NetworkCalls();
             String jsonStr = nc.getServerCall(Apis.getHitUrl(aNewsSourceList));
@@ -105,6 +79,24 @@ public class NewsJob extends Job {
             }
         }
         return Result.SUCCESS;
+    }
+
+    private void showNotification() {
+        PendingIntent pi = PendingIntent.getActivity(getContext(), 0,
+                new Intent(getContext(), MainActivity.class), 0);
+        Notification notification = new NotificationCompat.Builder(getContext())
+                .setContentTitle("News Headlines")
+                .setContentText("News Updated")
+                .setAutoCancel(true)
+                .setContentIntent(pi)
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setShowWhen(true)
+                .setColor(Color.RED)
+                .setLocalOnly(true)
+                .build();
+
+        NotificationManagerCompat.from(getContext())
+                .notify(new Random().nextInt(), notification);
     }
 
     public static void schedulePeriodic() {
