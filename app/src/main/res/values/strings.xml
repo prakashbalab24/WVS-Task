@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">Headlines</string>
     <string name="full_news">Full News</string>
-    <string name="cptext">Powered by newsapi.org</string>
+    <string name="cptext">Powered by newsapi.org Ⓒ singledevapps</string>
 </resources>
