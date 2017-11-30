@@ -58,7 +58,7 @@ public class Utils {
         // Add data to the intent, the receiving app will decide
         // what to do with it.
         share.putExtra(Intent.EXTRA_SUBJECT, "Title Of The Post");
-        share.putExtra(Intent.EXTRA_TEXT, url +"\n\n\n"+"Shared via Headlines app - https://www.google.com");
+        share.putExtra(Intent.EXTRA_TEXT, url +"\n\n\n"+"Shared via Headlines app - https://play.google.com/store/apps/details?id=singledevapps.wvstask");
 
         context.startActivity(Intent.createChooser(share, "Share link!"));
     }
