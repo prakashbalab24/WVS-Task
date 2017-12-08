@@ -3,6 +3,7 @@ package singledevapps.wvstask.application;
 import android.app.Application;
 
 import com.evernote.android.job.JobManager;
+import com.squareup.leakcanary.LeakCanary;
 
 import singledevapps.wvstask.R;
 import singledevapps.wvstask.helper.sync.NewsJobCreator;
@@ -22,6 +23,10 @@ public class Main extends Application {
                 .setFontAttrId(R.attr.fontPath)
                 .build()
         );
+        if (LeakCanary.isInAnalyzerProcess(this)) {
+            return;
+        }
+        LeakCanary.install(this);
         //    JobManager.instance().getConfig().setAllowSmallerIntervalsForMarshmallow(true); // Don't use this in production
     }
 }
