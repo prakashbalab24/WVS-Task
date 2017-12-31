@@ -27,6 +27,8 @@ import singledevapps.wvstask.helper.NetworkHelper;
 import singledevapps.wvstask.model.data.remote.NewsSouce;
 import singledevapps.wvstask.helper.SharedPrefHelper;
 
+import static singledevapps.wvstask.utils.Utils.isSystemAnimationsEnabled;
+
 public class SplashScreen extends AppCompatActivity {
     private static final int SPLASH_DISPLAY_LENGTH = 1000;
     private static final int NETSLOW = 15000;
@@ -38,6 +40,8 @@ public class SplashScreen extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash_screen);
+
+        Log.i("Animations", "anim:"+isSystemAnimationsEnabled(this));
         handler = new Handler();
         handler2 = new Handler();
         handler2.postDelayed(runnable2 = new Runnable(){
